@@ -355,11 +355,8 @@
           <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="feature-box blue">
               <i class="bi bi-patch-check"></i>
-              <h4>Innovation with Purpose
-</h4>
-              <p>Every solution we build—from UI/UX to custom apps—is grounded in functionality and creativity. With AI integration and future-ready tools, we don’t just follow trends—we create them.
-
-</p>
+              <h4>Innovation with Purpose</h4>
+              <p>Every solution we build—from UI/UX to custom apps—is grounded in functionality and creativity. With AI integration and future-ready tools, we don’t just follow trends—we create them.</p>
             </div>
           </div><!-- End Feature Borx-->
 
@@ -827,31 +824,36 @@ Development</h3>
               <h3>Get In Touch</h3>
               <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
 
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <!-- <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200"> -->
+              <form id="contact-form" action="#" method="post" class="php-email-form">
                 <div class="row gy-4">
 
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <!-- <div class="col-md-6">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required="">
                   </div>
 
                   <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                    <input type="email" id="email" class="form-control" name="email" placeholder="Your Email" required="">
                   </div>
 
                   <div class="col-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                    <input type="text" id="subject" class="form-control" name="subject" placeholder="Subject" required="">
                   </div>
 
                   <div class="col-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                    <textarea id="message" class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
                   </div>
 
                   <div class="col-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <div class="loading" style="display:none;">Loading</div>
+                    <div class="error-message" style="display:none;"></div>
+                    <div class="sent-message" style="display:none;">Your message has been sent. Thank you!</div>
 
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn">Send Message</button> -->
+
+                    <!-- SheetDB API -->
+                  <script src="https://sheetdb.io/s/f/8uzzmqm6ghn82.js"></script>
+
                   </div>
 
                 </div>
@@ -935,6 +937,46 @@ Development</h3>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+  <!-- <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  // Show loading
+  document.querySelector('.loading').classList.add('d-block');
+  document.querySelector('.error-message').classList.remove('d-block');
+  document.querySelector('.sent-message').classList.remove('d-block');
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    subject: form.subject.value,
+    message: form.message.value
+  };
+
+  try {
+    const response = await fetch('https://sheetdb.io/api/v1/deqf9dsa8w16u', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: data })
+    });
+
+    if (response.ok) {
+      document.querySelector('.loading').classList.remove('d-block');
+      document.querySelector('.sent-message').classList.add('d-block');
+      form.reset();
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (err) {
+    document.querySelector('.loading').classList.remove('d-block');
+    document.querySelector('.error-message').innerText = err.message;
+    document.querySelector('.error-message').classList.add('d-block');
+  }
+});
+  </script> -->
 
 </body>
 
