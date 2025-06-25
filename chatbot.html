@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Z INTECH | SupportBot</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="it company, business, corporate, startup">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/img/A1472D45-53ED-4D7E-B474-19B279E04D37.png" />
+
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        } */
+
+        .page-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #005A9C;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* --- Chatbot Toggle Button --- */
+        #chat-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #chat-toggle:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- Chatbot Window --- */
+        #chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            max-width: 90vw;
+            height: 500px;
+            max-height: 70vh;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        #chatbot-window.open {
+            transform: scale(1);
+        }
+        
+        /* --- Chatbot Header --- */
+        .chat-header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- Messages Area --- */
+        #chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: #f9f9f9;
+        }
+        
+        /* Custom Scrollbar */
+        #chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        #chat-messages::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 3px;
+        }
+
+        /* --- Individual Messages --- */
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            background-color: #E9E9EB;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-message {
+            background-color: #007BFF;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* --- Input Area --- */
+        .chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #user-input:focus {
+            border-color: #007BFF;
+        }
+
+        #send-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        #send-btn:hover {
+            background-color: #0056b3;
+        }
+  </style>
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="./assets/img/A1472D45-53ED-4D7E-B474-19B279E04D37.png" alt="">
+        <h1 class="sitename"><b>Z INTECH</b></h1>
+      </a>
+       <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">About</a></li>
+          <li><a href="index.html">Features</a></li>
+          <li><a href="service-details.html">Services</a></li>
+          <li><a href="index.html">Pricing</a></li>
+          <li><a href="#">chatbot</a></li>
+          <li class="dropdown"><a href="#"><span>Blogs</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Vcards</a></li>
+              <li><a href="blogs.html">Blogs</a></li>
+               <li><a href="#">ui ux design</a></li>
+              
+              </li>
+          </li>
+        </ul>
+        <li><a href="#contact">Contact</a></li>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+         <h1>chatbot<h1>
+        <!--<nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">chatbot</li>
+            
+          </ol>
+        </nav> -->
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Starter Section Section -->
+    <section id="starter-section" class="starter-section section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+
+    <div class="">
+        <h1>Welcome to Z INTECH PVT LTD</h1>
+        <p>Your trusted partner for innovative IT solutions. We specialize in web development, mobile applications, and cutting-edge AI integration.</p>
+        <p>Click the chat icon in the bottom right to talk to our SupportBot!</p>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chat-toggle">
+        <!-- Simple chat bubble icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot-window">
+        <div class="chat-header">Z INTECH SupportBot</div>
+        <div id="chat-messages">
+            <!-- Initial Welcome Message -->
+            <div class="message bot-message">
+                Hello! I'm Z INTECH SupportBot. How can I assist you with our services today? You can ask about Web Development, App Development, UI/UX, AI Services, or a free consultation.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-btn" aria-label="Send Message">
+                <!-- Simple send icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
+    
+      </div><!-- End Section Title -->
+
+     
+    </section><!-- /Starter Section Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Z INTECH</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>SUDAMPURI, WARDHA</p>
+            <p>Maharashtra 442001</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+91 9423032182</span></p>
+            <p><strong>Email:</strong> <span>zintech04.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a><i class="bi bi-twitter-x"></i></a>
+            <a><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/z_intech04/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/107047452/admin/dashboard/"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#services">Services</a></li>
+            <!-- <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li> -->
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Product Management</a></li>
+            <li><a href="#services">Marketing</a></li>
+            <li><a href="#services">Graphic Design</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Z INTECH Pvt. Ltd.</strong> <span>All Rights
+          Reserved</span></p>
+      <div class="credits">
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+        // --- DOM Element Selection ---
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        
+        // --- Knowledge Base: Services Offered ---
+        const servicesInfo = {
+            general: "We offer a wide range of IT services, including: Web Development (static, dynamic, e-commerce), App Development (Android, iOS, cross-platform), UI/UX Design, Software Application Development, and various AI integration services.if anything else please contact us by this email:hr@zintech04.com",
+            web: "We build all kinds of websites! This includes static sites for simple online presence, dynamic sites with content management systems, and full-featured e-commerce platforms.",
+            app: "We develop high-quality mobile apps for Android, iOS, and cross-platform solutions to reach a wider audience with a single codebase. What kind of app are you looking to build?",
+            ui_ux: "Our UI/UX design services focus on creating intuitive and beautiful user experiences. We handle everything from wireframing and prototyping to enhancing the user interface of existing products.",
+            software: "We develop custom software applications tailored to your specific business needs, helping you streamline operations and improve efficiency.",
+            ai: "We specialize in AI! Our services include NLP & Voice AI Integration, adding AI features to web and apps, AI-powered design tools, creating custom AI assistants, and using AI for SEO optimization.",
+            consultation: "Yes, we offer a free IT consultation! It's a great way for us to understand your project and for you to learn how we can help. Would you like to schedule one?",
+            price: "The cost of a project varies depending on its complexity, features, and timeline. The best way to get an accurate price is through our free consultation and project planning service. We can provide a detailed, no-obligation quotation.",
+            contact: "You can reach our human team by scheduling a free consultation or by emailing us at zintech04gmail.com, contact-8010449610 For a detailed discussion, the consultation is the best starting point!"
+        };
+
+        // --- Event Listeners ---
+        
+        // Toggle chatbot window
+        chatToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('open');
+        });
+
+        // Send message on button click
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Send message on 'Enter' key press
+        userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevents new line in input
+                sendMessage();
+            }
+        });
+
+        // --- Functions ---
+
+        // Main function to handle sending a message
+        function sendMessage() {
+            const messageText = userInput.value.trim();
+            if (messageText === '') return;
+
+            // Display user's message
+            addMessage(messageText, 'user-message');
+            userInput.value = '';
+
+            // Generate and display bot's response
+            setTimeout(() => {
+                const botResponse = getBotResponse(messageText);
+                addMessage(botResponse, 'bot-message');
+            }, 1000); // Simulate bot thinking
+        }
+
+        // Add a message to the chat display
+        function addMessage(text, className) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', className);
+            messageElement.textContent = text;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
+        }
+
+        // The "Brain" of the chatbot
+        function getBotResponse(inputText) {
+            const lowerInput = inputText.toLowerCase();
+
+            if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
+                return "Hello! How can I help you today?";
+            }
+            if (lowerInput.includes('services') || lowerInput.includes('what do you do') || lowerInput.includes('offer')) {
+                return servicesInfo.general;
+            }
+            if (lowerInput.includes('website') || lowerInput.includes('web development')) {
+                return servicesInfo.web;
+            }
+            if (lowerInput.includes('app') || lowerInput.includes('mobile')) {
+                return servicesInfo.app;
+            }
+            if (lowerInput.includes('ui') || lowerInput.includes('ux') || lowerInput.includes('design')) {
+                return servicesInfo.ui_ux;
+            }
+             if (lowerInput.includes('software')) {
+                return servicesInfo.software;
+            }
+            if (lowerInput.includes('ai') || lowerInput.includes('nlp') || lowerInput.includes('voice')) {
+                return servicesInfo.ai;
+            }
+            if (lowerInput.includes('cost') || lowerInput.includes('price') || lowerInput.includes('how much')) {
+                return servicesInfo.price;
+            }
+            if (lowerInput.includes('quotation') || lowerInput.includes('quote') || lowerInput.includes('planning')) {
+                return "We provide detailed project planning and quotations. This is typically part of our free consultation process. Would you like me to help you connect with our team for one?";
+            }
+            if (lowerInput.includes('consultation') || lowerInput.includes('free')) {
+                return servicesInfo.consultation;
+            }
+            if (lowerInput.includes('contact') || lowerInput.includes('talk to a human') || lowerInput.includes('team')) {
+                return servicesInfo.contact;
+            }
+             if (lowerInput.includes('bye') || lowerInput.includes('thank you') || lowerInput.includes('thanks')) {
+                return "You're welcome! Is there anything else I can help you with today? Feel free to ask for a free consultation to speak with our experts.";
+            }
+
+            // Fallback response
+            return "I'm not quite sure how to answer that. I can help with questions about our services like Web Development, App Development, UI/UX, and AI Integration. For more specific queries, I recommend our free IT consultation., is any thing else please contact over expert , email:zintech04gmail.com, number:8010449610";
+        }
+    </script>
+
+
+
+</body>
+
+</html>
