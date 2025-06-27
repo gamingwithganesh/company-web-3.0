@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,16 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17275879568"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17275879568');
+  </script>
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/img/A1472D45-53ED-4D7E-B474-19B279E04D37.png" />
 
@@ -47,7 +58,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-  
+
 
 </head>
 
@@ -75,12 +86,12 @@
             <ul>
               <li><a href="#">Vcards</a></li>
               <li><a href="blogs.html">Blogs</a></li>
-               <li><a href="#">ui ux design</a></li>
-              
-              </li>
-            </ul>
+              <li><a href="#">ui ux design</a></li>
+
           </li>
-          <li><a href="#contact">Contact</a></li>
+        </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -187,33 +198,39 @@
     </section><!-- /Hero Section -->
 
     <!-- chatbot section -->
-     <!-- Chatbot Toggle Button -->
+    <!-- Chatbot Toggle Button -->
     <button id="chat-toggle">
-        <!-- Simple chat bubble icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
+      <!-- Simple chat bubble icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
     </button>
 
     <!-- Chatbot Window -->
     <div id="chatbot-window">
-        <div class="chat-header">Z INTECH SupportBot</div>
-        <div id="chat-messages">
-            <!-- Initial Welcome Message -->
-            <div class="message bot-message">
-                Hello! I'm Z INTECH SupportBot. How can I assist you with our services today? You can ask about Web Development, App Development, UI/UX, AI Services, or a free consultation.
-            </div>
+      <div class="chat-header">Z INTECH SupportBot</div>
+      <div id="chat-messages">
+        <!-- Initial Welcome Message -->
+        <div class="message bot-message">
+          Hello! I'm Z INTECH SupportBot. How can I assist you with our services today? You can ask about Web
+          Development, App Development, UI/UX, AI Services, or a free consultation.
         </div>
-        <div class="chat-input-area">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button id="send-btn" aria-label="Send Message">
-                <!-- Simple send icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-btn" aria-label="Send Message">
+          <!-- Simple send icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    
+
     <!-- chatbot section end -->
 
     <!-- About Section -->
@@ -291,7 +308,7 @@
       </div>
 
     </section><!-- /About Section -->
-     
+
     <!-- Features Section -->
     <section id="features" class="features section">
 
@@ -350,7 +367,8 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" controls autoplay></video>
+                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" controls
+                  autoplay></video>
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -795,8 +813,8 @@
 
           <div class="col-lg-5" data-aos="fade-up" id="video-section">
             <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-            <video src="assets/video/add3.mp4" class="img-fluid main-image rounded-4" muted
-              id="myVideo" autoplay controls></video>
+            <video src="assets/video/add3.mp4" class="img-fluid main-image rounded-4" muted id="myVideo" autoplay
+              controls></video>
             <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
               <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -972,7 +990,7 @@
     </section><!-- /Contact Section -->
 
   </main>
-  
+
 
   <footer id="footer" class="footer">
 
@@ -1028,7 +1046,7 @@
     </div>
 
   </footer>
-  
+
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -1043,7 +1061,7 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/js/index.js"></script>
   <!-- chatbot script -->
-   <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/chatbot.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
@@ -1071,9 +1089,6 @@
       });
     });
   </script>
-
-
-  
 </body>
 
 </html>
