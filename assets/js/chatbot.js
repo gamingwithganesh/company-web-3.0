@@ -15,7 +15,7 @@
             ai: "We specialize in AI! Our services include NLP & Voice AI Integration, adding AI features to web and apps, AI-powered design tools, creating custom AI assistants, and using AI for SEO optimization.",
             consultation: "Yes, we offer a free IT consultation! It's a great way for us to understand your project and for you to learn how we can help. Would you like to schedule one?",
             price: "The cost of a project varies depending on its complexity, features, and timeline. The best way to get an accurate price is through our free consultation and project planning service. We can provide a detailed, no-obligation quotation.",
-            contact: "You can reach our human team by scheduling a free consultation or by emailing us at zintech04gmail.com, contact-8010449610 For a detailed discussion, the consultation is the best starting point!"
+            contact: "You can reach our human team by scheduling a free consultation or by emailing us at zintech04@gmail.com, contact-8010449610 For a detailed discussion, the consultation is the best starting point!"
         };
 
         // --- Event Listeners ---
