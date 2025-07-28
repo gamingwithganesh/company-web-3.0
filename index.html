@@ -101,6 +101,54 @@
     </div>
   </header>
 
+  <!-- Alert Modal for Hackathon Image -->
+  <div class="modal fade" id="hackathonAlert" tabindex="-1" aria-labelledby="hackathonAlertLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hackathonAlertLabel">🏆 Hackathon Challenge 2K25</h5>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/img/Z INTECH Hackathon 2025.png" alt="Hackathon Challenge 2K25" class="img-fluid rounded">
+          <div class="mt-4">
+            <div class="row text-start">
+              <div class="col-md-6">
+                <h6><strong>🎯 Theme:</strong></h6>
+                <p>Web Development - Build Smarter, Faster Web Apps</p>
+                
+                <h6><strong>🏆 Prizes:</strong></h6>
+                <ul>
+                  <li>1st Prize - ₹5,000</li>
+                  <li>2nd Prize - ₹3,000</li>
+                  <li>Top 3 Teams - 3-Month Internship @Z INTECH</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6><strong>📅 Date:</strong></h6>
+                <p>September 11 - 25, 2025</p>
+                
+                <h6><strong>📍 Venue:</strong></h6>
+                <p>Agnihotri Polytechnic, Nagthana, Wardha</p>
+                
+                <h6><strong>💰 Entry Fee:</strong></h6>
+                <p>₹400 per team (Max 4 members)</p>
+              </div>
+            </div>
+            <div class="mt-3 text-center">
+              <p style="color: black;" class=""><strong class="text-primary">📧 Contact:</strong> zintech04@gmail.com | 📞 7038694471</p>
+              <p class="text-muted"><strong>Pre-Registration is Live!</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: black;">Close</button>
+          <a href="https://forms.gle/X1E5RBGpBLyNM9mA6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ALert over -->
+
   <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -292,8 +340,8 @@
           <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
             <div class="image-wrapper">
               <div class="images position-relative" id="video-section1" data-aos="zoom-out" data-aos-delay="400">
-                <video src="assets/video/add2.mp4" id="myVideo1" class="img-fluid main-image rounded-4" autoplay
-                  controls muted></video>
+                <video src="assets/video/add2.mp4" id="myVideo1" class="img-fluid main-image rounded-4" autoplay muted
+                  controls></video>
                 <div class="experience-badge floating">
                   <h3>2+ <span>Years</span></h3>
                   <p>Of experience in business service</p>
@@ -367,7 +415,7 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" controls
+                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" muted controls
                   autoplay></video>
               </div>
             </div>
@@ -393,7 +441,7 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo5.mp4" id="myVideo" autoplay controls
+                <video src="assets/video/demo5.mp4" id="myVideo" muted autoplay controls
                   class="img-fluid main-image rounded-4"></video>
               </div>
             </div>
@@ -418,7 +466,7 @@
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo6.mp4" id="myVideo" autoplay controls
+                <video src="assets/video/demo6.mp4" id="myVideo" muted autoplay controls
                   class="img-fluid main-image rounded-4"></video>
               </div>
             </div>
@@ -540,8 +588,8 @@
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="phone-mockup text-center" id="video-section">
               <!-- <img src="assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid"> -->
-              <video src="./assets//video/add.mp4" id="myVideo" class="img-fluid main-image rounded-4" autoplay controls
-                muted></video>
+              <video src="./assets//video/add.mp4" id="myVideo" class="img-fluid main-image rounded-4" autoplay muted controls
+                ></video>
             </div>
           </div><!-- End Phone Mockup -->
 
@@ -1065,6 +1113,26 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <!-- Hackathon Alert Script -->
+  <script>
+    // Ensure the hackathon modal appears when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const hackathonModal = document.getElementById('hackathonAlert');
+          if (hackathonModal && typeof bootstrap !== 'undefined') {
+            const modal = new bootstrap.Modal(hackathonModal, {
+              backdrop: true,
+              keyboard: true
+            });
+            modal.show();
+          }
+        }, 1000); // Show after 1 second
+      });
+    });
+  </script>
+  
   <script>
     // filepath: /Users/ganesh/Documents/f-project/iLanding-1.0.0/company_web/company-web-3.0/index.html
     document.addEventListener("DOMContentLoaded", function () {
@@ -1077,7 +1145,7 @@
         const observer = new IntersectionObserver(([entry]) => {
           if (entry.isIntersecting) {
             video.currentTime = 0; // Play from start
-            video.muted = false;   // Unmute audio
+            video.muted = true;    // Keep audio muted
             video.play();
           } else {
             video.pause();
