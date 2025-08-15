@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,16 @@
   <title>Z INTECH</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17275879568"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17275879568');
+  </script>
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/img/A1472D45-53ED-4D7E-B474-19B279E04D37.png" />
@@ -50,7 +61,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-  
+
 
 </head>
 
@@ -78,12 +89,12 @@
             <ul>
               <li><a href="#">Vcards</a></li>
               <li><a href="blogs.html">Blogs</a></li>
-               <li><a href="#">ui ux design</a></li>
-              
-              </li>
-            </ul>
+              <li><a href="#">ui ux design</a></li>
+
           </li>
-          <li><a href="#contact">Contact</a></li>
+        </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -92,6 +103,54 @@
 
     </div>
   </header>
+
+  <!-- Alert Modal for Hackathon Image -->
+  <div class="modal fade" id="hackathonAlert" tabindex="-1" aria-labelledby="hackathonAlertLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hackathonAlertLabel">🏆 Hackathon Challenge 2K25</h5>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/img/Z INTECH Hackathon 2025.png" alt="Hackathon Challenge 2K25" class="img-fluid rounded">
+          <div class="mt-4">
+            <div class="row text-start">
+              <div class="col-md-6">
+                <h6><strong>🎯 Theme:</strong></h6>
+                <p>Web Development - Build Smarter, Faster Web Apps</p>
+                
+                <h6><strong>🏆 Prizes:</strong></h6>
+                <ul>
+                  <li>1st Prize - ₹5,000</li>
+                  <li>2nd Prize - ₹3,000</li>
+                  <li>Top 3 Teams - 3-Month Internship @Z INTECH</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6><strong>📅 Date:</strong></h6>
+                <p>September 11 - 25, 2025</p>
+                
+                <h6><strong>📍 Venue:</strong></h6>
+                <p>Agnihotri Polytechnic, Nagthana, Wardha</p>
+                
+                <h6><strong>💰 Entry Fee:</strong></h6>
+                <p>₹400 per team (Max 4 members)</p>
+              </div>
+            </div>
+            <div class="mt-3 text-center">
+              <p style="color: black;" class=""><strong class="text-primary">📧 Contact:</strong> zintech04@gmail.com | 📞 7038694471</p>
+              <p class="text-muted"><strong>Pre-Registration is Live!</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: black;">Close</button>
+          <a href="https://forms.gle/X1E5RBGpBLyNM9mA6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ALert over -->
 
   <main class="main">
     <!-- Hero Section -->
@@ -206,7 +265,7 @@
       <button onclick="sendMessage()">Send</button>
     </div>
   </div>
-    
+  
     <!-- chatbot section end -->
 
     <!-- About Section -->
@@ -268,8 +327,8 @@
           <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
             <div class="image-wrapper">
               <div class="images position-relative" id="video-section1" data-aos="zoom-out" data-aos-delay="400">
-                <video src="assets/video/add2.mp4" id="myVideo1" class="img-fluid main-image rounded-4" autoplay
-                  controls muted></video>
+                <video src="assets/video/add2.mp4" id="myVideo1" class="img-fluid main-image rounded-4" autoplay muted
+                  controls></video>
                 <div class="experience-badge floating">
                   <h3>2+ <span>Years</span></h3>
                   <p>Of experience in business service</p>
@@ -284,7 +343,7 @@
       </div>
 
     </section><!-- /About Section -->
-     
+
     <!-- Features Section -->
     <section id="features" class="features section">
 
@@ -343,7 +402,8 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" controls autoplay></video>
+                <video src="assets/video/demo4.mp4" class="img-fluid main-image rounded-4" id="myVideo" muted controls
+                  autoplay></video>
               </div>
             </div>
           </div><!-- End tab content item -->
@@ -368,7 +428,7 @@
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo5.mp4" id="myVideo" autoplay controls
+                <video src="assets/video/demo5.mp4" id="myVideo" muted autoplay controls
                   class="img-fluid main-image rounded-4"></video>
               </div>
             </div>
@@ -393,7 +453,7 @@
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center" id="video-section">
-                <video src="assets/video/demo6.mp4" id="myVideo" autoplay controls
+                <video src="assets/video/demo6.mp4" id="myVideo" muted autoplay controls
                   class="img-fluid main-image rounded-4"></video>
               </div>
             </div>
@@ -515,8 +575,8 @@
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="phone-mockup text-center" id="video-section">
               <!-- <img src="assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid"> -->
-              <video src="./assets//video/add.mov" id="myVideo" class="img-fluid main-image rounded-4" autoplay controls
-                muted></video>
+              <video src="./assets//video/add.mp4" id="myVideo" class="img-fluid main-image rounded-4" autoplay muted controls
+                ></video>
             </div>
           </div><!-- End Phone Mockup -->
 
@@ -788,8 +848,8 @@
 
           <div class="col-lg-5" data-aos="fade-up" id="video-section">
             <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-            <video src="assets/video/add3.mp4" class="img-fluid main-image rounded-4" muted
-              id="myVideo" autoplay controls></video>
+            <video src="assets/video/add3.mp4" class="img-fluid main-image rounded-4" muted id="myVideo" autoplay
+              controls></video>
             <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
               <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -965,7 +1025,7 @@
     </section><!-- /Contact Section -->
 
   </main>
-  
+
 
   <footer id="footer" class="footer">
 
@@ -1021,7 +1081,7 @@
     </div>
 
   </footer>
-  
+
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -1036,10 +1096,30 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/js/index.js"></script>
   <!-- chatbot script -->
-   <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/chatbot.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <!-- Hackathon Alert Script -->
+  <script>
+    // Ensure the hackathon modal appears when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const hackathonModal = document.getElementById('hackathonAlert');
+          if (hackathonModal && typeof bootstrap !== 'undefined') {
+            const modal = new bootstrap.Modal(hackathonModal, {
+              backdrop: true,
+              keyboard: true
+            });
+            modal.show();
+          }
+        }, 1000); // Show after 1 second
+      });
+    });
+  </script>
+  
   <script>
     // filepath: /Users/ganesh/Documents/f-project/iLanding-1.0.0/company_web/company-web-3.0/index.html
     document.addEventListener("DOMContentLoaded", function () {
@@ -1052,7 +1132,7 @@
         const observer = new IntersectionObserver(([entry]) => {
           if (entry.isIntersecting) {
             video.currentTime = 0; // Play from start
-            video.muted = false;   // Unmute audio
+            video.muted = true;    // Keep audio muted
             video.play();
           } else {
             video.pause();
@@ -1204,8 +1284,6 @@ Now, respond to: "${userText}"`
   </script>
 
 
-
-  
 </body>
 
 </html>
