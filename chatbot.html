@@ -29,6 +29,10 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/chatbot.css">
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
   
 </head>
 
@@ -70,66 +74,60 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container">
-         <h1>chatbot<h1>
-        <!--<nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">chatbot</li>
-            
-          </ol>
-        </nav> -->
-      </div>
-    </div><!-- End Page Title -->
+   <section class="hero" id="about">
+    <h2>Transforming Ideas Into Reality With <span style="color:#2e3ebd">Z INTECH</span></h2>
+    <p>Z INTECH specializes in custom web/app development, digital solutions, AI integration, and professional IT consultation to help businesses grow.</p>
+  </section>
+    <!-- <section id="starter-section" class="starter-section section">
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Transforming Ideas Into Reality With <span style="color:#2e3ebd">Z INTECH</span></h2>
+      <p>Z INTECH specializes in custom web/app development, digital solutions, AI integration, and professional IT consultation to help businesses grow.</p>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-
-    <div class="">
-        <h1>Welcome to Z INTECH PVT LTD</h1>
-        <p>Your trusted partner for innovative IT solutions. We specialize in web development, mobile applications, and cutting-edge AI integration.</p>
-        <p>Click the chat icon in the bottom right to talk to our SupportBot!</p>
-    </div>
-
-    <!-- Chatbot Toggle Button -->
-    <button id="chat-toggle">
-        <!-- Simple chat bubble icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </button>
-
-    <!-- Chatbot Window -->
-    <div id="chatbot-window">
-        <div class="chat-header">Z INTECH SupportBot</div>
-        <div id="chat-messages">
-            <!-- Initial Welcome Message -->
-            <div class="message bot-message">
-                Hello! I'm Z INTECH SupportBot. How can I assist you with our services today? You can ask about Web Development, App Development, UI/UX, AI Services, or a free consultation.
-            </div>
         </div>
-        <div class="chat-input-area">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button id="send-btn" aria-label="Send Message">
-                <!-- Simple send icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-        </div>
+      </section> -->
+
+  <section class="features" id="features">
+    <div class="feature-box">
+      <i class="fas fa-code"></i>
+      <h4>Web Development</h4>
+      <p>Responsive, e-commerce & dynamic websites tailored for business.</p>
     </div>
+    <div class="feature-box">
+      <i class="fas fa-mobile-alt"></i>
+      <h4>App Development</h4>
+      <p>Powerful Android/iOS applications with modern UI/UX.</p>
+    </div>
+    <div class="feature-box">
+      <i class="fas fa-drafting-compass"></i>
+      <h4>UI/UX Design</h4>
+      <p>Wireframes, prototyping & sleek interface design.</p>
+    </div>
+    <div class="feature-box">
+      <i class="fas fa-brain"></i>
+      <h4>AI & NLP</h4>
+      <p>Voice, chatbot, and AI features embedded in your solution.</p>
+    </div>
+  </section>
 
-    
-      </div><!-- End Section Title -->
+  <!-- Chat Assistant Button -->
+  <button class="chat-button" onclick="toggleChat()">
+    <i class="fas fa-comments"></i>
+  </button>
 
-     
-    </section><!-- /Starter Section Section -->
-
-  </main>
-
+  <!-- Chat Assistant Popup -->
+  <div id="chat-popup">
+    <div id="chat-header">Zoe – AI Assistant</div>
+    <div id="chat-messages">
+      <div>Zoe: Hi! I’m Zoe, your virtual assistant. How can I help you?</div>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="userInput" placeholder="Ask me about Z INTECH..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</main>
+  
   <footer id="footer" class="footer">
 
     <div class="container footer-top">
@@ -199,6 +197,146 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/chatbot.js"></script>
+  <script>
+    const chatPopup = document.getElementById("chat-popup");
+    const chatHeader = document.getElementById("chat-header");
+    let isDragging = false, dragOffsetX, dragOffsetY;
+
+    chatHeader.addEventListener("mousedown", function (e) {
+      isDragging = true;
+      dragOffsetX = e.clientX - chatPopup.offsetLeft;
+      dragOffsetY = e.clientY - chatPopup.offsetTop;
+    });
+    document.addEventListener("mouseup", () => (isDragging = false));
+    document.addEventListener("mousemove", function (e) {
+      if (isDragging) {
+        chatPopup.style.left = `${e.clientX - dragOffsetX}px`;
+        chatPopup.style.top = `${e.clientY - dragOffsetY}px`;
+      }
+    });
+
+    document.getElementById("userInput").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function toggleChat() {
+      chatPopup.style.display = chatPopup.style.display === "flex" ? "none" : "flex";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      const messages = document.getElementById("chat-messages");
+      const userMsg = document.createElement("div");
+      userMsg.textContent = "You: " + userText;
+      messages.appendChild(userMsg);
+
+      input.value = "";
+      const botMsg = document.createElement("div");
+      botMsg.className = "typing";
+      botMsg.textContent = "Zoe is typing...";
+      messages.appendChild(botMsg);
+
+      const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCemUCd7BFxgTtBFDScf_squvA-IKYaDIc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+text: `You are Zoe, You are Z INTECH SupportBot, a professional, friendly, and knowledgeable Al assistant representing Z
+INTECH PVT LTD, a trusted IT company. Your job is to assist clients and website visitors with information
+about the company's services. Always be polite, helpful, and clear in your responses.
+
+Z INTECH offers:
+
+Web Development (static, dynamic, e-commerce websites)
+App Development (Android, iOs, cross-platform)
+UI/UX Design (wireframing, prototyping, user interface enhancement)
+Software Application Development
+NLP & Voice Al Integration
+Al Integration in Web & App Development
+Al-Powered Design Tools
+Al Assistance Development
+Al for SEO Optimization
+Free IT Consultation
+Project Planning & Quotation
+Web Design
+Digital Marketing 
+Graphic Design
+
+Our mission is to help businesses scale with smart digital solutions that are secure, efficient and buit for future. 
+Expertise in AI & automation
+Scalable cloud first architecture
+Intutive, user focused design 
+Data driven product development
+Industry specific tech strategies
+End to end development services 
+
+Z INTECH Contact Information :
+Location: Sudampuri, Wardha, Maharashtra, 442001
+Phone: +91 8010449610, +91 7038694471
+Email: zintech04@gmail.com and hr@zintech04.com
+
+When answering questions:
+
+Provide short, clear, and informative responses.
+Offer to connect with a human agent for further help if needed.
+Ask relevant follow-up questions if user input is vague (e.g., "What kind of app are you looking to build?")
+Never fabricate services or prices-only use the data you are given.
+
+Examples of questions you may receive:
+
+'What services do you offer?
+'How much does a website cost?"
+Can I get a free consultation?"
+'I need an app for my business-can you help?"
+'How do I contact your team?"
+"Do you build ecommerce websites?"
+"Can you redesign my existing website?"
+"How long does it take to build an app?"
+"Do you provide SEO optimization using AI?"
+"Can I see examples of your UI/UX design work?"
+"Do you offer voice assistant integration for apps?"
+"Can you help me with a cross-platform app?"
+"Is there a fee for your IT consultation?"
+"Do you offer project planning support?"
+"Can I add AI features to my current website?"
+"Do you help with app deployment too?"
+"Can I hire your team only for UI/UX design?"
+"What is the process to start a project with you?"
+"Do you develop software for specific industries?"
+"Can you integrate AI tools into my business app?"
+"Is your team available for ongoing support?"
+"How can I get a custom quote?"
+"What kind of businesses do you work with?"
+"Do I need to pay before the consultation?"
+"Are you located in Maharashtra?"
+
+Your tone must be:
+Friendly but professional
+Supportive and approachable
+Efficient and business-focused
+f a user is unsure what they want, guide them by explaining the available services and suggesting the best
+starting point (like a free consultation).
+
+Respond professionally using plain text only. Limit replies to 30–40 words. Include all important information clearly, and do not use * or ** anywhere in the response.
+
+Now, respond to: "${userText}"`
+            }]
+          }]
+        })
+      });
+
+      const data = await response.json();
+      botMsg.classList.remove("typing");
+      botMsg.textContent = "Zoe: " + (data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't understand that.");
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+
+
 
 
 
