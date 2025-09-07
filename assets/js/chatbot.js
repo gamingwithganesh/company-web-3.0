@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-const API_KEY = "AIzaSyD4WveSDzvsuoW_M-ovQ6ifh3HDZOW3_SM";
+const API_KEY = "AIzaSyA1Yaz-CN213YNgs4Etrw5CXii8Sn1aKcg";
 const chatbox = document.getElementById("chatbox");
 
 async function sendMessage() {
@@ -24,7 +24,7 @@ async function sendMessage() {
   input.value = "";
 
    const response = await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCemUCd7BFxgTtBFDScf_squvA-IKYaDIc",
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyA1Yaz-CN213YNgs4Etrw5CXii8Sn1aKcg",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
