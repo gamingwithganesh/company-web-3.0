@@ -3,7 +3,7 @@
     const chatHeader = document.getElementById("chat-header");
 
     // Configuration — Google Gemini API
-    const GEMINI_API_KEY = 'AIzaSyCNeqzPL-CMQETGrLRFr3Y2QmGps5XvFxk';
+    const GEMINI_API_KEY = 'AIzaSyC0hwZAtkb1W3e6vIgfwgwX8dZm9N5eQ4k';
     const GEMINI_ENDPOINT = 'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent';
 
     let isDragging = false, dragOffsetX, dragOffsetY;
